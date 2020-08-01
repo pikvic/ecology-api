@@ -10,7 +10,7 @@ app = FastAPI()
 sample_data.generate_data()
 
 @app.get("/")
-def reports() -> List[Report]:
+def root() -> List[Report]:
     return sample_data.reports
 
 @app.get("/reports")
