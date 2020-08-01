@@ -13,6 +13,10 @@ sample_data.generate_data()
 def reports() -> List[Report]:
     return sample_data.reports
 
+@app.get("/reports")
+def reports() -> List[Report]:
+    return sample_data.reports
+
 
 @app.get("/fw/{report_id}")
 def get_fw(report_id: int) -> FreshWaterReport:
