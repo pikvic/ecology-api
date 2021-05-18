@@ -2,8 +2,10 @@ from fastapi import FastAPI
 from datetime import datetime
 from typing import List
 
-from models import Report, FreshWaterReport, SeaWaterReport, GasReport
+from models import Parameter, Report, FreshWaterReport, SeaWaterReport, GasReport, Template, TemplateParameter
 import sample_data
+import sample_data_api
+
 
 app = FastAPI()
 
@@ -39,3 +41,15 @@ def get_gas(report_id: int) -> FreshWaterReport:
     else:
         return {"error": "No such report_id!"}
 
+
+@app.get("/api/templates")
+def get_templates() -> List[Template]:
+    return sample_data_api.TEMPLATES
+
+@app.get("/api/parameters")
+def get_parameters() -> List[Parameter]:
+    return sample_data_api.PARAMETERS
+
+@app.get("/api/templates_parameters")
+def get_templates_parameters() -> List[TemplateParameter]:
+    return sample_data_api.PARAMETERS_TEMPLATES
